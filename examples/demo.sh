@@ -3,7 +3,7 @@ WORDFILE=$DATADIR/glove.840B.300d.txt
 
 # download word vector
 if [ ! -e $WORDFILE ]; then
-wget http://nlp.stanford.edu/data/glove.840B.300d.zip
+wget --no-clobber http://nlp.stanford.edu/data/glove.840B.300d.zip
 unzip glove.840B.300d.zip -d $DATADIR
 rm glove.840B.300d.zip
 fi
