@@ -80,7 +80,7 @@ def sim_evaluate_all(We, words, weight4ind, scoring_function, params):
     n = sum(parr[15:20]) / 5.0
     s += "%30s %10f \n" % ("2015-average ", n)
 
-    print s
+    print(s)
 
     return parr, sarr
 
@@ -98,7 +98,7 @@ def sim_evaluate_one(We, words, weight4ind, scoring_function, params):
     s = ""
     for i,j in zip(farr, parr):
         s += "%30s %10f\n" % (i, j)
-    print s
+    print(s)
 
     return parr, sarr
 
@@ -143,7 +143,7 @@ def acc(preds,scores):
         else:
             raise ValueError('Something wrong with data...')
         golds.append(p)
-    #print confusion_matrix(golds,preds)
+    #print(confusion_matrix(golds,preds))
     return accuracy_score(golds,preds)
 
 def accSentiment(preds,scores):

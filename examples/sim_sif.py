@@ -20,10 +20,10 @@ for wordfile in wordfiles:
         word2weight = data_io.getWordWeight(weightfile, weightpara)
         weight4ind = data_io.getWeight(words, word2weight)
         for rmpc in rmpcs:
-            print 'word vectors loaded from %s' % wordfile
-            print 'word weights computed from %s using parameter a=%f' % (weightfile, weightpara)
+            print('word vectors loaded from {}'.format(wordfile))
+            print('word weights computed from {} using parameter a=()'.format(weightfile, weightpara))
             params.rmpc = rmpc
-            print 'remove the first %d principal components' % rmpc
+            print('remove the first %d principal components {}'.format(rmpc))
             ## eval just one example dataset
             parr, sarr = eval.sim_evaluate_one(We, words, weight4ind, sim_algo.weighted_average_sim_rmpc, params)
             ## eval all datasets; need to obtained datasets from John Wieting (https://github.com/jwieting/iclr2016)

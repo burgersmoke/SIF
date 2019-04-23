@@ -37,13 +37,13 @@ class proj_model_sentiment(object):
         l_out = lasagne.layers.DenseLayer(l_average, params.layersize, nonlinearity=params.nonlinearity)
         embg = lasagne.layers.get_output(l_out, {l_in:g1batchindices, l_mask:g1mask})
         if params.npc <= 0:
-            print "#pc <=0, do not remove pc"
+            print("#pc <=0, do not remove pc")
         elif params.npc == 1:
-            print "#pc == 1"
+            print("#pc == 1")
             proj =  embg.dot(pc.transpose())
             embg = embg - theano.tensor.outer(proj, pc)
         else:
-            print "#pc > 1"
+            print("#pc > 1")
             proj =  embg.dot(pc.transpose())
             embg = embg - theano.tensor.dot(proj, pc)
 

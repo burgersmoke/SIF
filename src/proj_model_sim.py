@@ -45,15 +45,15 @@ class proj_model_sim(object):
         embg2 = lasagne.layers.get_output(l_out, {l_in:g2batchindices, l_mask:g2mask})
 
         if params.npc <= 0:
-            print "#pc <=0, do not remove pc"
+            print("#pc <=0, do not remove pc")
         elif params.npc == 1:
-            print "#pc == 1"
+            print("#pc == 1")
             proj1 =  embg1.dot(pc.transpose())
             proj2 =  embg2.dot(pc.transpose())
             embg1 = embg1 - theano.tensor.outer(proj1, pc)
             embg2 = embg2 - theano.tensor.outer(proj2, pc)
         else:
-            print "#pc > 1"
+            print("#pc > 1")
             proj1 =  embg1.dot(pc.transpose())
             proj2 =  embg2.dot(pc.transpose())
             embg1 = embg1 - theano.tensor.dot(proj1, pc)
