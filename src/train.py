@@ -16,6 +16,8 @@ from proj_model_sim import proj_model_sim
 from proj_model_sentiment import proj_model_sentiment
 import eval
 
+from past.builtins import xrange
+
 ##################################################
 def str2bool(v):
     "utility function for parsing boolean arguments"

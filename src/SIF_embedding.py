@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.decomposition import TruncatedSVD
-
+from past.builtins import xrange
 
 def get_weighted_average(We, x, w):
     """
