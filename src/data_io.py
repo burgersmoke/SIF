@@ -20,6 +20,32 @@ def getWordmap(textfile):
         words[i[0]]=n
         We.append(v)
     return (words, np.array(We))
+    
+# modified from this post on reddit: 
+# https://stackoverflow.com/questions/37793118/load-pretrained-glove-vectors-in-python
+def load_glove_word_map(glove_file, vector_size = 300):
+    print("Loading Glove Model")
+    f = open(glove_file, 'r', encoding='utf8')
+    embeddings_list = []
+    word_map = {}
+    line_count = 0
+    for line in f:
+    
+        if line_count % 10000 == 0:
+            print('Current line count : {}'.format(line_count))
+    
+        split_line = line.split()
+        word = " ".join(split_line[0:len(split_line) - vector_size])
+        embedding = np.array([float(val) for val in split_line[-vector_size:]])
+        embeddings_list.append(embedding)
+        
+        word_index = split_line[0]
+        word_map[word] = word_index
+        
+        line_count += 1
+        
+    print("Done.\n" + str(len(word_map)) + " words loaded!")
+    return (word_map, np.array(embeddings_list))
 
 def prepare_data(list_of_seqs):
     lengths = [len(s) for s in list_of_seqs]
@@ -286,13 +312,13 @@ def getWordWeight(weightfile, a=1e-3):
                 N += float(i[1])
             else:
                 print(i)
-    for key, value in word2weight.iteritems():
+    for key, value in word2weight.items():
         word2weight[key] = a / (a + value/N)
     return word2weight
 
 def getWeight(words, word2weight):
     weight4ind = {}
-    for word, ind in words.iteritems():
+    for word, ind in words.items():
         if word in word2weight:
             weight4ind[ind] = word2weight[word]
         else:
