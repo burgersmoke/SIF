@@ -41,8 +41,7 @@ def load_glove_word_map(glove_file, vector_size = 300):
         embedding = np.array([float(val) for val in split_line[-vector_size:]])
         embeddings_list.append(embedding)
         
-        word_index = split_line[0]
-        word_map[word] = word_index
+        word_map[word] = line_count
         
         line_count += 1
         
