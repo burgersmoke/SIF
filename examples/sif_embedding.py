@@ -10,7 +10,8 @@ rmpc = 1 # number of principal components to remove in SIF weighting scheme
 sentences = ['this is an example sentence', 'this is another sentence that is slightly longer']
 
 # load word vectors
-(words, We) = data_io.getWordmap(wordfile)
+#(words, We) = data_io.getWordmap(wordfile)
+(words, We) = data_io.load_glove_word_map(wordfile)
 # load word weights
 word2weight = data_io.getWordWeight(weightfile, weightpara) # word2weight['str'] is the weight for the word 'str'
 weight4ind = data_io.getWeight(words, word2weight) # weight4ind[i] is the weight for the i-th word
