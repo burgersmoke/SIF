@@ -19,18 +19,6 @@ class SIFModel(object):
         self.svd = None
         self.word_map = None
         self.params = params
-        
-    def save(self, filename):
-        components = [self.word_map, self.weight4ind, self.params, self.svd]
-        sklearn_joblib.dump(components, filename)
-        
-    def load(self, filename):
-        components = sklearn_joblib.load(filename)
-        self.trained = True
-        self.word_map = components[0]
-        self.weight4ind = components[1]
-        self.params = components[2]
-        self.svd = components[3]
 
     def transform(self, We, sentences):
         x, m = data_io.sentences2idx(sentences, self.word_map) # x is the array of word indices, m is the binary mask indicating whether there is a word in that location
